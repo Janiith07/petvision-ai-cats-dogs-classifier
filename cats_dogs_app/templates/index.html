@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>PetVision AI — Cats vs Dogs CNN</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}" />
+</head>
+<body>
+  <div class="page-bg" aria-hidden="true"></div>
+  <div class="grid-overlay" aria-hidden="true"></div>
+
+  <header class="site-header">
+    <a href="/" class="brand" aria-label="PetVision AI Home">
+      <span class="brand-icon">🐾</span>
+      <span>
+        <strong>PetVision <b>AI</b></strong>
+        <small>CNN Image Classifier</small>
+      </span>
+    </a>
+
+    <div class="model-pill"><span></span> Model Ready</div>
+  </header>
+
+  <main class="hero-section">
+    <section class="hero-copy">
+      <h1>Classify pet images with a custom <em>CNN</em> model.</h1>
+      <p class="hero-text">
+        Upload a cat or dog image and let the trained convolutional neural network predict the class with a confidence score.
+      </p>
+
+      <div class="hero-actions">
+        <button class="btn btn-primary" onclick="document.getElementById('fileInput').click()">Get Started <span>➜</span></button>
+        <a class="btn btn-outline" href="#how">Learn More <span>▮▮▮</span></a>
+      </div>
+
+      <div class="feature-row" id="about">
+        <article class="feature-card">
+          <div class="feature-icon purple">🧠</div>
+          <strong>Deep Learning</strong>
+          <small>Built with TensorFlow & Keras</small>
+        </article>
+        <article class="feature-card">
+          <div class="feature-icon blue">🎯</div>
+          <strong>Confidence Score</strong>
+          <small>Cat vs Dog probability output</small>
+        </article>
+        <article class="feature-card">
+          <div class="feature-icon green">🛡️</div>
+          <strong>Secure & Fast</strong>
+          <small>Private local predictions</small>
+        </article>
+      </div>
+    </section>
+
+    <section class="classifier-card" id="model">
+      <div class="panel-header">
+        <div>
+          <p>LIVE PREDICTION</p>
+          <h2>Upload pet image</h2>
+        </div>
+       
+      </div>
+
+      <div class="upload-card" id="uploadCard">
+        <div class="drop-zone" id="dropZone" tabindex="0">
+          <input type="file" id="fileInput" accept="image/*" hidden />
+          <div class="upload-icon">☁</div>
+          <h3>Drag & drop your image here</h3>
+          <p>or browse from your computer</p>
+          <small>JPG, PNG, WEBP supported</small>
+          <button type="button" class="btn btn-primary choose-btn" onclick="event.stopPropagation(); document.getElementById('fileInput').click();">Choose Image</button>
+        </div>
+
+        <div class="preview-wrap" id="previewWrap" style="display:none">
+          <div class="preview-frame">
+            <img id="previewImg" class="preview-img" src="" alt="Selected pet preview" />
+          </div>
+          <div class="preview-actions">
+            <button class="btn btn-primary" id="predictBtn">Classify Image</button>
+            <button class="btn btn-outline" id="clearBtn">Clear</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="result-card" id="resultCard" style="display:none">
+        <div class="result-inner">
+      
+          <div>
+            <p class="result-kicker">Prediction Result</p>
+            <p class="result-label" id="resultLabel"></p>
+            <p class="result-conf" id="resultConf"></p>
+          </div>
+        </div>
+
+        <div class="bar-wrap">
+          <div class="bar-labels"><span>Cat</span><span>Dog</span></div>
+          <div class="bar-track"><div class="bar-fill" id="barFill"></div><div class="bar-thumb" id="barThumb"></div></div>
+          <div class="bar-prob"><span id="catProb"></span><span id="dogProb"></span></div>
+        </div>
+
+        <button class="btn btn-outline try-again" id="tryAgainBtn">Try Another Image</button>
+      </div>
+    </section>
+  </main>
+
+  
+
+  <div class="loading-overlay" id="loadingOverlay" style="display:none">
+    <div class="loader-card">
+      <div class="spinner"></div>
+      <p>Classifying image...</p>
+      <span>Running CNN prediction</span>
+    </div>
+  </div>
+
+  <div class="toast" id="toast" style="display:none"></div>
+
+  <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+</body>
+</html>
