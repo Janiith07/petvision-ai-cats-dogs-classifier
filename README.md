@@ -1,8 +1,5 @@
 # 🐾 PetVision AI — Cats vs Dogs CNN Classifier
 
-![Python](https://img.shields.io/badge/Python-3.10+-blue) ![TensorFlow](https://img.shields.io/badge/TensorFlow-2.13+-orange) ![Flask](https://img.shields.io/badge/Flask-2.3+-green) ![Keras Tuner](https://img.shields.io/badge/Keras_Tuner-Bayesian-purple) ![Deep Learning](https://img.shields.io/badge/Deep_Learning-CNN-red)
-
----
 
 ## 📌 Introduction
 
